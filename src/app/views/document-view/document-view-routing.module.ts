@@ -14,5 +14,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class ClientsRoutingModule {
+export class DocumentViewRoutingModule {
 }

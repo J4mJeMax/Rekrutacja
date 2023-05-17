@@ -6,7 +6,7 @@ const http = require("http");
 const databaseConfig = {
   host: 'localhost',
   user: 'root',
-  database: 'rekrutacja',
+  database: 'project',
   password: '',
   charset : 'utf8_general_ci',
 }
@@ -26,32 +26,32 @@ app.use(function (req, res, next) {
 
 
 
-app.get('/users', (req, res) => {
-  let query = `SELECT * FROM users`;
+app.get('/clients', (req, res) => {
+  let query = `SELECT * FROM clients`;
   pool.query(query, (err, rows) => {
     if(err) throw err;
     res.send(rows);
   });
 });
 
-app.post('/users', (req, res) => {
-  let query = `INSERT INTO users (name) VALUES ('${req.body.name}')`;
+app.post('/clients', (req, res) => {
+  let query = `INSERT INTO clients (name) VALUES ('${req.body.name}')`;
   pool.query(query, (err, rows) => {
     if(err) throw err;
     res.send(rows);
   });
 });
 
-app.delete('/users/:id', (req, res) => {
-  let query = `DELETE FROM users WHERE client_id = ${req.params.id}`;
+app.delete('/clients/:id', (req, res) => {
+  let query = `DELETE FROM clients WHERE client_id = ${req.params.id}`;
   pool.query(query, (err, rows) => {
     if(err) throw err;
     res.send(rows);
   });
 });
 
-app.put('/users/:id', (req, res) => {
-  let query = `UPDATE users SET name = '${req.body.name}' WHERE client_id = ${req.params.id}`;
+app.put('/clients/:id', (req, res) => {
+  let query = `UPDATE clients SET name = '${req.body.name}' WHERE client_id = ${req.params.id}`;
   pool.query(query, (err, rows) => {
     if(err) throw err;
     res.send(rows);

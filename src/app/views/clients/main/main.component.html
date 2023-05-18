@@ -2,4 +2,9 @@
   <h1>Lista klientów</h1>
 </div>
 
-<app-table></app-table>
+<p>Wybierz klienta</p>
+
+<button *ngFor="let clients of clients" routerLink="/documents/{{clients.client_id}}">
+  {{clients.name}}
+</button>
+

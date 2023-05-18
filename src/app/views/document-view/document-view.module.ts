@@ -3,10 +3,11 @@ import {CommonModule} from '@angular/common';
 import {DocumentViewRoutingModule} from './document-view-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MainComponent } from './main/main.component';
-import {TableComponent} from "../../shared/components/table/table.component";
+import { CodeEditorComponent } from './code-editor/code-editor.component';
+import { TreeViewComponent } from './tree-view/tree-view.component';
 
 @NgModule({
-  declarations: [MainComponent, TableComponent],
+  declarations: [MainComponent, CodeEditorComponent, TreeViewComponent],
   imports: [
     CommonModule,
     DocumentViewRoutingModule,
@@ -15,5 +16,5 @@ import {TableComponent} from "../../shared/components/table/table.component";
   ]
 })
 
-export class DocumentsModule {
+export class DocumentsViewModule {
 }

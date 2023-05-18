@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const http = require("http");
+const bodyParser = require('body-parser');
 const databaseConfig = {
   host: 'localhost',
   user: 'root',
@@ -12,6 +13,8 @@ const databaseConfig = {
 }
 
 const pool = mysql.createPool(databaseConfig);
+
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(cors({
   credentials: true,
@@ -58,8 +61,9 @@ app.put('/clients/:id', (req, res) => {
   });
 })
 
-app.get('/documents', (req, res) => {
-  let query = `SELECT * FROM documents WHERE client_id = ${req.query.client_id}`;
+app.get('/documents/:clientId', (req, res) => {
+  console.log(req.params)
+  let query = `SELECT * FROM documents WHERE client_id = ${req.params.clientId}`;
   pool.query(query, (err, rows) => {
     if(err) throw err;
     res.send(rows);
@@ -87,6 +91,14 @@ app.put('/documents/:id', (req, res) => {
   pool.query(query, (err, rows) => {
     if(err) throw err;
     res.send(rows);
+  });
+});
+
+app.get('/document/:id', (req, res) => {
+  let query = `SELECT * FROM documents WHERE document_id = ${req.params.id}`;
+  pool.query(query, (err, rows) => {
+  if(err) throw err;
+  res.send(rows[0]);
   });
 });
 

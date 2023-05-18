@@ -2,11 +2,10 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DocumentsRoutingModule} from './documents-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MainComponent } from './main/main.component';
-import {TableComponent} from "../../shared/components/table/table.component";
+import {MainComponent} from './main/main.component';
 
 @NgModule({
-  declarations: [MainComponent, TableComponent],
+  declarations: [MainComponent],
   imports: [
     CommonModule,
     DocumentsRoutingModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ClientsService} from "../clients.service";
+import {IClients} from "../clients.interface";
 
 @Component({
   selector: 'app-main',
@@ -11,15 +12,11 @@ export class MainComponent {
     private clientsService: ClientsService
   ) {}
 
-  clients: any[] = [];
-
-
-
+  clients: IClients[] = [];
 
   ngOnInit() {
     this.clientsService.getClients()
-      .subscribe((clients: any[]) => {
-        console.log(clients)
+      .subscribe((clients: IClients[]) => {
         this.clients = clients;
       });
   }

@@ -1,1 +1,39 @@
-<p>main works!</p>
+<h1>Dokumenty</h1>
+
+<div>
+  <h3>Dodaj dokument</h3>
+</div>
+
+<div>
+  <form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="client_id">Klient</label>
+      <select id="client_id" formControlName="client_id">
+        <option *ngFor="let client of clients" [value]="client.client_id">{{ client.name }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="name">Nazwa</label>
+      <input type="text" id="name" formControlName="name">
+    </div>
+
+    <div>
+      <label for="content">Zawartość</label>
+      <textarea id="content" formControlName="content"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="documentForm.invalid">Potwierdź</button>
+  </form>
+</div>
+
+<div>
+  <h3>Lista dokumentów</h3>
+
+  <div class="tile" *ngFor="let document of documents">
+    <h2>{{document.name}} </h2>
+    <p>Utworzono: {{document.create_date | date: 'YYYY-mm-dd'}}</p>
+    <button routerLink="/documents-view/{{document.document_id}}">Przejdź</button>
+  </div>
+
+</div>

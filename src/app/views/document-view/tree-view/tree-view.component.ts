@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {IDocuments} from "../../documents/documents.interface";
 
 @Component({
   selector: 'app-tree-view',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./tree-view.component.scss']
 })
 export class TreeViewComponent {
-
+  @Input() activeDocument: IDocuments = {client_id: 0, content: "", name: ""};
 }
